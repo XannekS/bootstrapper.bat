@@ -8,7 +8,7 @@ REM Set the name of the bootstrapper file
 set "bootstrapperFile=bootstrapper.bat"  REM Zmien na odpowiednia nazwe pliku
 
 REM Set the name of the text file that contains the zip link
-set "linkFile=https://cdn.discordapp.com/attachments/1250181733110775839/1302754250601791539/haha?ex=672943f1&is=6727f271&hm=58a9649fdcda824b096ba55a4545a5b66466a9857f1970e182459c8b471fe676&"  REM Upewnij się, że ten plik zawiera poprawny link do ZIP-a
+set "linkFile=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Upewnij się, że ten plik zawiera poprawny link do ZIP-a
 
 REM Check if curl is available
 where curl >nul 2>nul
@@ -74,8 +74,7 @@ echo Installation completed successfully.
 
 REM Auto-update the bootstrapper by launching the new version
 echo Launching the new version of the bootstrapper...
-start "" "%bootstrapperFile%"
-exit /b 0
+start "" cmd /c "%bootstrapperFile%" & exit /b 0  REM Uruchom nową wersję i zakończ obecny skrypt
 
 REM Delete the downloaded zip file and the old bootstrapper
 echo Cleaning up...
