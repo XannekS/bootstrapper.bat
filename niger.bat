@@ -27,7 +27,8 @@ if %errorlevel% neq 0 (
 echo Bootstrapper "%bootstrapperFile%" has been downloaded successfully.
 
 REM Set the link to the zip file you want to download from the repository
-set "zipUrl=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Użyj poprawnego linku do pliku ZIP
+set "zipUrl=https://raw.githubusercontent.com/svex99/quick-zip-bot/main/requirements.tct
+"  REM Użyj poprawnego linku do pliku ZIP
 
 REM Download the zip file
 echo Downloading file from %zipUrl%...
