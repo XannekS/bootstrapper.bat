@@ -60,6 +60,9 @@ if %errorlevel% neq 0 (
 
 echo File "Release.zip" has been unzipped successfully.
 
+REM Show a message box after successful installation
+powershell -command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Installation completed successfully!', 'Installation Status')"
+
 REM Delete the downloaded zip file and the bootstrapper
 echo Cleaning up...
 del "Release.zip"
