@@ -2,7 +2,7 @@
 setlocal
 
 REM Set the link to the GitHub repository for the bootstrapper
-set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/VAPE-FILES/main/bootstrapper.bat"  REM Zmien na odpowiedni link do bootstrappera
+set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/bootstrapper.bat/refs/heads/main/niger.bat"  REM Zmien na odpowiedni link do bootstrappera
 
 REM Set the name of the file you want to download
 set "filename=bootstrapper.bat"  REM Zmien na odpowiednia nazwe pliku
