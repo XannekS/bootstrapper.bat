@@ -1,11 +1,11 @@
 @echo off
 setlocal
 
-REM Set the link to the GitHub repository for the bootstrapper
-set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/bootstrapper.bat/refs/heads/main/niger.bat"  REM Zmien na odpowiedni link do bootstrappera
+REM Set the link to the current bootstrapper file in the GitHub repository
+set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/bootstrapper.bat/main/niger.bat"  REM Upewnij się, że to jest poprawny link
 
-REM Set the name of the file you want to download
-set "filename=bootstrapper.bat"  REM Zmien na odpowiednia nazwe pliku
+REM Set the name of the bootstrapper file
+set "bootstrapperFile=niger.bat"  REM Zmien na odpowiednia nazwe pliku
 
 REM Check if curl is available
 where curl >nul 2>nul
@@ -16,7 +16,7 @@ if %errorlevel% neq 0 (
 
 REM Download the bootstrapper file
 echo Downloading the bootstrapper from %bootstrapperRepo%...
-curl -L -o "%filename%" "%bootstrapperRepo%"
+curl -L -o "%bootstrapperFile%" "%bootstrapperRepo%"
 
 REM Check if the download was successful
 if %errorlevel% neq 0 (
@@ -24,21 +24,14 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo Bootstrapper "%filename%" has been downloaded successfully.
+echo Bootstrapper "%bootstrapperFile%" has been downloaded successfully.
 
-REM Check if 7-Zip is available for unzipping
-where 7z >nul 2>nul
-if %errorlevel% neq 0 (
-    echo 7-Zip is not installed. Please install 7-Zip or another unzip tool.
-    exit /b 1
-)
-
-REM Set the link to the file you want to download from the repository
-set "url=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Zmien na odpowiedni link do pliku ZIP
+REM Set the link to the zip file you want to download from the repository
+set "zipUrl=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Użyj poprawnego linku do pliku ZIP
 
 REM Download the zip file
-echo Downloading file from %url%...
-curl -L -o "Release.zip" "%url%"
+echo Downloading file from %zipUrl%...
+curl -L -o "Release.zip" "%zipUrl%"
 
 REM Check if the download was successful
 if %errorlevel% neq 0 (
@@ -47,6 +40,13 @@ if %errorlevel% neq 0 (
 )
 
 echo File "Release.zip" has been downloaded successfully.
+
+REM Check if 7-Zip is available for unzipping
+where 7z >nul 2>nul
+if %errorlevel% neq 0 (
+    echo 7-Zip is not installed. Please install 7-Zip to unzip files.
+    exit /b 1
+)
 
 REM Unzip the downloaded file
 echo Unzipping the file...
