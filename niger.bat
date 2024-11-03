@@ -34,7 +34,7 @@ if %errorlevel% neq 0 (
 )
 
 REM Set the link to the file you want to download from the repository
-set "url=https://github.com/XannekS/VAPE-FILES/blob/main/Release.zip"  REM Zmien na odpowiedni link do pliku ZIP
+set "url=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Zmien na odpowiedni link do pliku ZIP
 
 REM Download the zip file
 echo Downloading file from %url%...
