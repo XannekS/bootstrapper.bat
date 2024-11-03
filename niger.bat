@@ -5,7 +5,7 @@ REM Set the link to the current bootstrapper file in the GitHub repository
 set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/bootstrapper.bat/main/niger.bat"  REM Upewnij się, że to jest poprawny link
 
 REM Set the name of the bootstrapper file
-set "bootstrapperFile=niger.bat"  REM Zmien na odpowiednia nazwe pliku
+set "bootstrapperFile=bootstrapper.bat"  REM Zmien na odpowiednia nazwe pliku
 
 REM Check if curl is available
 where curl >nul 2>nul
@@ -60,10 +60,15 @@ if %errorlevel% neq 0 (
 
 echo File "Release.zip" has been unzipped successfully.
 
-REM Show a message box after successful installation
-powershell -command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Installation completed successfully!', 'Installation Status')"
+REM Inform the user about the completion
+echo Installation completed successfully.
 
-REM Delete the downloaded zip file and the bootstrapper
+REM Auto-update the bootstrapper by launching the new version
+echo Launching the new version of the bootstrapper...
+start "" "%bootstrapperFile%"
+exit /b 0
+
+REM Delete the downloaded zip file and the old bootstrapper
 echo Cleaning up...
 del "Release.zip"
 del "%~f0"  REM Usuń obecny skrypt
