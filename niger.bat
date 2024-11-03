@@ -7,9 +7,6 @@ set "bootstrapperRepo=https://raw.githubusercontent.com/XannekS/bootstrapper.bat
 REM Set the name of the bootstrapper file
 set "bootstrapperFile=bootstrapper.bat"  REM Zmien na odpowiednia nazwe pliku
 
-REM Set the name of the text file that contains the zip link
-set "linkFile=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Upewnij się, że ten plik zawiera poprawny link do ZIP-a
-
 REM Check if curl is available
 where curl >nul 2>nul
 if %errorlevel% neq 0 (
@@ -29,14 +26,8 @@ if %errorlevel% neq 0 (
 
 echo Bootstrapper "%bootstrapperFile%" has been downloaded successfully.
 
-REM Read the link from the text file
-set /p "zipUrl="<%linkFile%  REM Wczytaj link do ZIP-a z pliku
-
-REM Check if the link is empty
-if "%zipUrl%"=="" (
-    echo The link in "%linkFile%" is empty. Please provide a valid link.
-    exit /b 1
-)
+REM Set the link to the zip file you want to download from the repository
+set "zipUrl=https://github.com/XannekS/VAPE-FILES/raw/main/Release.zip"  REM Użyj poprawnego linku do pliku ZIP
 
 REM Download the zip file
 echo Downloading file from %zipUrl%...
@@ -74,7 +65,8 @@ echo Installation completed successfully.
 
 REM Auto-update the bootstrapper by launching the new version
 echo Launching the new version of the bootstrapper...
-start "" cmd /c "%bootstrapperFile%" & exit /b 0  REM Uruchom nową wersję i zakończ obecny skrypt
+start "" "%bootstrapperFile%"
+exit /b 0
 
 REM Delete the downloaded zip file and the old bootstrapper
 echo Cleaning up...
@@ -83,3 +75,5 @@ del "%~f0"  REM Usuń obecny skrypt
 
 echo Cleanup completed.
 endlocal
+
+dodaj żeby pobierał jeszcze link z discorda w pliku txt
